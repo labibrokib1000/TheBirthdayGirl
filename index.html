@@ -28,6 +28,10 @@
       background: var(--night);
       font-family: "DM Sans", sans-serif;
       overflow-x: hidden;
+      overflow-y: hidden;
+    }
+    body.unlocked {
+      overflow-y: auto;
     }
     body::before {
       content: "";
@@ -236,6 +240,7 @@
     const toast = document.querySelector("#toast");
     const colors = ["#ff8da1", "#ffc58f", "#b7a1ff", "#fff8f3"];
     function celebrate() {
+      document.body.classList.add("unlocked");
       toast.classList.add("show");
       setTimeout(() => toast.classList.remove("show"), 3600);
       for (let i = 0; i < 75; i++) {
