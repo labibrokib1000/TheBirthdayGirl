@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#110d21" />
+  <title>For My Favorite Person</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #fff8f3;
+      --muted: #cfc2d8;
+      --rose: #ff8da1;
+      --peach: #ffc58f;
+      --lavender: #b7a1ff;
+      --night: #110d21;
+      --card: rgba(255, 255, 255, .085);
+      --line: rgba(255, 255, 255, .15);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--night);
+      font-family: "DM Sans", sans-serif;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      opacity: .82;
+      background:
+        linear-gradient(180deg, rgba(17, 13, 33, .82) 0%, rgba(17, 13, 33, .54) 42%, rgba(13, 10, 23, .92) 100%),
+        radial-gradient(circle at 15% 15%, rgba(255, 141, 161, .27), transparent 30%),
+        radial-gradient(circle at 90% 15%, rgba(183, 161, 255, .23), transparent 28%),
+        url("tasfia-background.jpg") center / cover no-repeat;
+      background-attachment: fixed;
+    }
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      opacity: .25;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.17'/%3E%3C/svg%3E");
+      mix-blend-mode: screen;
+    }
+    .shell { width: min(1120px, calc(100% - 40px)); margin: auto; }
+    header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 25px 0; position: relative; z-index: 2;
+    }
+    .brand { display: flex; gap: 10px; align-items: center; font-weight: 700; letter-spacing: .04em; font-size: 13px; text-transform: uppercase; }
+    .brand-mark { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg, var(--rose), var(--lavender)); box-shadow: 0 0 22px rgba(255, 141, 161, .35); }
+    .date-pill { color: var(--muted); font-size: 12px; border: 1px solid var(--line); border-radius: 99px; padding: 9px 14px; backdrop-filter: blur(12px); }
+    .hero { min-height: 735px; display: grid; place-items: center; text-align: center; position: relative; padding: 65px 0 120px; }
+    .eyebrow { color: var(--peach); text-transform: uppercase; letter-spacing: .22em; font-size: 11px; font-weight: 700; margin-bottom: 22px; }
+    h1, h2, .quote { font-family: "Cormorant Garamond", serif; }
+    h1 { font-size: clamp(65px, 11vw, 132px); line-height: .82; font-weight: 500; letter-spacing: -.055em; margin: 0; }
+    h1 em { color: var(--rose); font-style: normal; display: block; text-shadow: 0 0 45px rgba(255, 141, 161, .3); }
+    .recipient-name {
+      display: inline-block;
+      position: relative;
+      margin: 24px 0 0;
+      color: transparent;
+      background: linear-gradient(105deg, var(--peach) 20%, #fff8f3 42%, var(--rose) 62%, var(--peach) 82%);
+      background-size: 220% auto;
+      background-clip: text;
+      -webkit-background-clip: text;
+      font: 600 clamp(30px, 5vw, 50px) "Cormorant Garamond", serif;
+      letter-spacing: .02em;
+      filter: drop-shadow(0 0 15px rgba(255, 141, 161, .28));
+      animation: name-glow 4s ease-in-out infinite, name-float 3s ease-in-out infinite;
+    }
+    .recipient-name::after {
+      content: "✦";
+      position: absolute;
+      top: -9px;
+      right: -26px;
+      color: var(--peach);
+      font: 16px "DM Sans", sans-serif;
+      animation: name-star 2s ease-in-out infinite;
+    }
+    @keyframes name-glow {
+      0%, 100% { background-position: 0% center; }
+      50% { background-position: 100% center; }
+    }
+    @keyframes name-float {
+      0%, 100% { transform: translateY(0) rotate(-1deg); }
+      50% { transform: translateY(-5px) rotate(1deg); }
+    }
+    @keyframes name-star {
+      0%, 100% { opacity: .35; transform: scale(.7) rotate(0); }
+      50% { opacity: 1; transform: scale(1.25) rotate(18deg); }
+    }
+    .hero-copy { max-width: 550px; color: var(--muted); font-size: 16px; line-height: 1.75; margin: 30px auto 32px; }
+    .cta {
+      color: #241123; background: linear-gradient(105deg, var(--peach), var(--rose));
+      border: 0; border-radius: 99px; padding: 16px 25px; font: 700 13px "DM Sans"; cursor: pointer;
+      box-shadow: 0 12px 35px rgba(255, 141, 161, .22); transition: transform .25s, box-shadow .25s;
+    }
+    .cta:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 16px 42px rgba(255, 141, 161, .36); }
+    .orb { position: absolute; border-radius: 50%; filter: blur(1px); opacity: .7; pointer-events: none; }
+    .orb.one { width: 13px; height: 13px; background: var(--peach); top: 25%; left: 13%; box-shadow: 0 0 22px var(--peach); }
+    .orb.two { width: 8px; height: 8px; background: var(--lavender); top: 18%; right: 18%; box-shadow: 0 0 16px var(--lavender); }
+    .orb.three { width: 6px; height: 6px; background: var(--rose); bottom: 26%; left: 24%; box-shadow: 0 0 18px var(--rose); }
+    .sparkles { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+    .sparkles span { position: absolute; color: #fff; opacity: .6; animation: twinkle 2.5s infinite alternate; }
+    .sparkles span:nth-child(1) { top: 23%; left: 27%; } .sparkles span:nth-child(2) { top: 32%; right: 24%; animation-delay: .8s; } .sparkles span:nth-child(3) { bottom: 28%; right: 17%; animation-delay: 1.4s; }
+    @keyframes twinkle { from { opacity: .15; transform: scale(.65) rotate(0); } to { opacity: .9; transform: scale(1.2) rotate(20deg); } }
+    .section { padding: 55px 0 100px; }
+    .section-heading { text-align: center; max-width: 620px; margin: 0 auto 45px; }
+    h2 { font-size: clamp(42px, 6vw, 67px); line-height: .95; font-weight: 500; margin: 10px 0 18px; }
+    .section-heading p { color: var(--muted); line-height: 1.7; }
+    .wish-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 17px; }
+    .wish-card { min-height: 240px; padding: 25px; border: 1px solid var(--line); background: var(--card); border-radius: 22px; backdrop-filter: blur(15px); transition: transform .3s, background .3s; }
+    .wish-card:hover { transform: translateY(-7px); background: rgba(255, 255, 255, .12); }
+    .wish-icon { font-size: 25px; margin-bottom: 35px; }
+    .wish-card h3 { font: 600 25px "Cormorant Garamond"; margin: 0 0 8px; }
+    .wish-card p { color: var(--muted); font-size: 13px; line-height: 1.65; margin: 0; }
+    .letter { display: grid; grid-template-columns: .75fr 1.25fr; gap: 45px; align-items: center; padding: 70px 0 120px; }
+    .letter-art { min-height: 340px; position: relative; display: grid; place-items: center; }
+    .moon { width: 245px; height: 245px; border-radius: 50%; background: linear-gradient(145deg, #ffd4c0, #ff8da1); box-shadow: 0 0 90px rgba(255, 141, 161, .27); }
+    .moon::after { content: ""; display: block; width: 245px; height: 245px; border-radius: 50%; transform: translate(35px, -13px); background: var(--night); }
+    .heart { position: absolute; font-size: 47px; transform: rotate(-12deg); filter: drop-shadow(0 10px 20px rgba(255, 141, 161, .4)); }
+    .letter-content { padding: 15px 0; }
+    .quote { color: #ffcfbf; font-size: clamp(29px, 4vw, 49px); line-height: 1.08; margin: 0 0 25px; }
+    .signature { color: var(--muted); font-size: 13px; line-height: 1.7; }
+    footer { border-top: 1px solid var(--line); padding: 24px 0 30px; color: #9f91ae; font-size: 11px; display: flex; justify-content: space-between; }
+    .toast { position: fixed; z-index: 5; top: 28px; left: 50%; transform: translate(-50%, -130px); padding: 17px 23px; border: 1px solid rgba(255,255,255,.22); border-radius: 12px; background: rgba(27, 15, 40, .9); backdrop-filter: blur(15px); color: var(--ink); font-size: 13px; transition: transform .5s cubic-bezier(.2,.8,.2,1); box-shadow: 0 12px 35px rgba(0,0,0,.25); }
+    .toast.show { transform: translate(-50%, 0); }
+    .confetti { position: fixed; z-index: 4; width: 8px; height: 12px; top: -20px; pointer-events: none; animation: fall 2.8s linear forwards; }
+    @keyframes fall { to { transform: translate3d(var(--x), 110vh, 0) rotate(720deg); opacity: 0; } }
+    .balloon {
+      position: fixed;
+      z-index: 3;
+      bottom: -110px;
+      left: var(--left);
+      width: 48px;
+      height: 62px;
+      border-radius: 50% 50% 45% 45%;
+      background: var(--balloon-color);
+      box-shadow: inset -8px -8px 0 rgba(0, 0, 0, .09), 0 8px 22px rgba(0, 0, 0, .16);
+      pointer-events: none;
+      animation: float-balloon var(--duration) cubic-bezier(.2, .7, .25, 1) forwards;
+    }
+    .balloon::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -7px;
+      width: 10px;
+      height: 10px;
+      background: var(--balloon-color);
+      transform: translateX(-50%) rotate(45deg);
+    }
+    .balloon::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 68px;
+      width: 1px;
+      height: 95px;
+      background: rgba(255, 255, 255, .55);
+      transform-origin: top;
+      transform: rotate(var(--string-angle));
+    }
+    @keyframes float-balloon {
+      0% { transform: translate3d(0, 0, 0) rotate(-4deg); opacity: 0; }
+      10% { opacity: 1; }
+      55% { transform: translate3d(var(--drift), -58vh, 0) rotate(6deg); }
+      100% { transform: translate3d(calc(var(--drift) * -1), -120vh, 0) rotate(-8deg); opacity: 0; }
+    }
+    @media (max-width: 700px) {
+      .shell { width: min(100% - 30px, 540px); } header { padding-top: 18px; }
+      .hero { min-height: 620px; padding-top: 30px; } .orb.one { left: 3%; } .orb.two { right: 4%; }
+      .wish-grid, .letter { grid-template-columns: 1fr; } .letter { gap: 10px; padding-top: 10px; }
+      .letter-art { min-height: 250px; transform: scale(.75); } footer { gap: 15px; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <div class="toast" id="toast">Your birthday magic is on its way ✨</div>
+  <div class="shell">
+    <header>
+      <div class="brand"><span class="brand-mark">♥</span> A little love note</div>
+      <div class="date-pill">For your special day · 2026</div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="sparkles"><span>✦</span><span>✧</span><span>✦</span></div>
+        <i class="orb one"></i><i class="orb two"></i><i class="orb three"></i>
+        <div>
+          <div class="eyebrow">Today, the universe celebrates you</div>
+          <h1>Happy<br><em>Birthday</em></h1>
+          <div class="recipient-name">Tasfia Tasnim</div>
+          <p class="hero-copy">To my favorite person in the whole wide world — may this new chapter feel as beautiful, warm, and unforgettable as you make every ordinary day.</p>
+          <button class="cta" id="celebrate">Open your little surprise&nbsp; →</button>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <div class="eyebrow">Three things I wish for you</div>
+          <h2>May your year be full of the good stuff.</h2>
+          <p>The kind of moments you want to bottle up forever, keep close, and replay whenever you need a little more sunshine.</p>
+        </div>
+        <div class="wish-grid">
+          <article class="wish-card"><div class="wish-icon">☼</div><h3>Soft mornings</h3><p>Slow starts, warm coffee, and every reason to smile before the day even begins.</p></article>
+          <article class="wish-card"><div class="wish-icon">✦</div><h3>Big dreams</h3><p>Brave little leaps that lead you somewhere wonderful — somewhere you have always wanted to go.</p></article>
+          <article class="wish-card"><div class="wish-icon">♡</div><h3>Endless love</h3><p>More laughter than tears, more hugs than goodbyes, and someone cheering for you through it all.</p></article>
+        </div>
+      </section>
+
+      <section class="letter">
+        <div class="letter-art"><div class="moon"></div><div class="heart">♥</div></div>
+        <div class="letter-content">
+          <div class="eyebrow">A note from my heart</div>
+          <p class="quote">“You make life feel a little more golden just by being in it.”</p>
+          <p class="signature">Thank you for being your wonderfully unforgettable self. I hope you know how deeply you are loved — today, tomorrow, and in every beautiful day ahead.<br><br>With all my heart,<br><strong>your biggest fan ♥</strong></p>
+        </div>
+      </section>
+    </main>
+    <footer><span>Made with a little stardust and a lot of love.</span><span>For my Bibijaan ♥♥</span></footer>
+  </div>
+  <script>
+    const button = document.querySelector("#celebrate");
+    const toast = document.querySelector("#toast");
+    const colors = ["#ff8da1", "#ffc58f", "#b7a1ff", "#fff8f3"];
+    function celebrate() {
+      toast.classList.add("show");
+      setTimeout(() => toast.classList.remove("show"), 3600);
+      for (let i = 0; i < 75; i++) {
+        const piece = document.createElement("i");
+        piece.className = "confetti";
+        piece.style.left = `${Math.random() * 100}vw`;
+        piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+        piece.style.setProperty("--x", `${(Math.random() - .5) * 260}px`);
+        piece.style.animationDelay = `${Math.random() * .45}s`;
+        piece.style.transform = `rotate(${Math.random() * 180}deg)`;
+        document.body.appendChild(piece);
+        setTimeout(() => piece.remove(), 3400);
+      }
+      for (let i = 0; i < 12; i++) {
+        const balloon = document.createElement("i");
+        balloon.className = "balloon";
+        balloon.style.setProperty("--left", `${5 + Math.random() * 90}vw`);
+        balloon.style.setProperty("--drift", `${(Math.random() - .5) * 150}px`);
+        balloon.style.setProperty("--duration", `${4.2 + Math.random() * 2.4}s`);
+        balloon.style.setProperty("--string-angle", `${(Math.random() - .5) * 14}deg`);
+        balloon.style.setProperty("--balloon-color", colors[i % colors.length]);
+        balloon.style.animationDelay = `${Math.random() * .7}s`;
+        document.body.appendChild(balloon);
+        setTimeout(() => balloon.remove(), 7200);
+      }
+      document.querySelector(".section").scrollIntoView({ behavior: "smooth" });
+    }
+    button.addEventListener("click", celebrate);
+  </script>
+</body>
+</html>
